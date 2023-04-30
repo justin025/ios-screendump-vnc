@@ -1,8 +1,10 @@
 #include <errno.h>
 #include <substrate.h>
 #include <rfb/rfb.h>
+#include <UIKit/UIKit.h>
+#include <Foundation/Foundation.h>
 
-#define kSettingsPath @"//var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist"
+#define kSettingsPath ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist")
 
 static bool CCSisEnabled = true;
 static NSString *CCSPassword = nil;
@@ -49,7 +51,7 @@ typedef mach_port_t io_service_t;
 typedef kern_return_t IOReturn;
 typedef IOReturn IOMobileFramebufferReturn;
 typedef io_service_t IOMobileFramebufferService;
-extern "C" mach_port_t mach_task_self(void);
+// extern "C" mach_port_t mach_task_self(void);
 extern "C" void IOSurfaceFlushProcessorCaches(IOSurfaceRef buffer);
 extern "C" int IOSurfaceLock(IOSurfaceRef surface, uint32_t options, uint32_t *seed);
 extern "C" int IOSurfaceUnlock(IOSurfaceRef surface, uint32_t options, uint32_t *seed);

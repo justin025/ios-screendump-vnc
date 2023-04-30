@@ -3,7 +3,7 @@
 #include <rfb/rfb.h>
 #import <xpc/xpc.h>
 
-#define kSettingsPath @"//var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist"
+#define kSettingsPath ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist")
 
 static bool CCSisEnabled = true;
 static NSString *CCSPassword = nil;

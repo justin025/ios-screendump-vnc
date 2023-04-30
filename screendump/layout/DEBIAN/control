@@ -1,9 +1,9 @@
 Package: com.julioverne.screendump13
-Name: screendump (iOS 13)
+Name: screendump (iOS 13+)
 Depends: mobilesubstrate, preferenceloader
 Conflicts: com.cosmosgenius.screendump
-Architecture: iphoneos-arm
-Description: VNC for ios
+Architecture: iphoneos-arm64
+Description: VNC for ios (rootless/Ellekit)
 Maintainer: Julio
 Author: julioverne, Sharat M R
 Section: Tweaks
