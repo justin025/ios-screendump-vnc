@@ -5,7 +5,7 @@
 
 #undef NSLog
 
-#define kSettingsPath ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist")
+#define kSettingsPath @"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist"
 
 extern "C" UIImage* _UICreateScreenUIImage();
 

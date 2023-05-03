@@ -4,7 +4,7 @@
 #include <UIKit/UIKit.h>
 #include <Foundation/Foundation.h>
 
-#define kSettingsPath ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist")
+#define kSettingsPath @"/var/mobile/Library/Preferences/com.cosmosgenius.screendump.plist"
 
 static bool CCSisEnabled = true;
 static NSString *CCSPassword = nil;
