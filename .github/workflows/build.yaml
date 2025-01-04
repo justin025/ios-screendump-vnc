@@ -16,7 +16,7 @@ jobs:
     - name: Install Deps
       shell: bash
       run: |
-          sudo apt upgrade -yq && sudo apt install libplist3 libz3-4 libplist-utils -yq
+          sudo apt update -yq && sudo apt install libplist3 libz3-4 libplist-utils -yq
 
     - name: Install Theos
       shell: bash
