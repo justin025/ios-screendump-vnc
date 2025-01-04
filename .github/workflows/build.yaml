@@ -1,0 +1,49 @@
+# Based on https://github.com/Randomblock1/theos-action
+name: Build Packages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    env:
+      THEOS: /home/runner/theos
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Install Theos
+      shell: bash
+      run: |
+        if [ ! -d "$THEOS" ]; then
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
+          echo "Theos successfully downloaded."
+
+          # Fix theos: https://gist.github.com/Serena1432/10763b73c8bcfa8c2d203c759a56b089
+          cd $THEOS
+          git checkout e045ac7
+          git submodule update --init --recursive
+
+          # fix for 
+          mkdir -p "$THEOS/lib/iphone/rootless"
+
+          # ensure deps are installed
+          sudo apt upgrade -yq && sudo apt install libplist3 libz3-4 libplist-utils -yq
+        else
+          echo "Theos already cached."
+        fi
+
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Build packages
+      run: |
+        cd screendump
+        make clean && make package
+
+    - name: Upload package
+      uses: actions/upload-artifact@v4
+      with:
+        name: "Package built by ${{ matrix.os }}"
+        path: ${{ github.workspace }}/screendump/packages/*.deb
