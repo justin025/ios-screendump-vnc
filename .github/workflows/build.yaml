@@ -23,6 +23,13 @@ jobs:
           bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)"
           echo "Theos successfully downloaded."
           mkdir -p "$THEOS/lib/iphone/rootless"
+
+          # New versions of theos seem to have issues compiling on Linux: https://gist.github.com/Serena1432/10763b73c8bcfa8c2d203c759a56b089#installing-theos
+
+          cd "$THEOS"
+          git checkout e045ac7
+          git submodule update --init --recursive
+
         else
           echo "Theos already cached."
         fi
